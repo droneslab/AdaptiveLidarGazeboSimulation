@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<sdf version='1.6'>
+  <world name='default'>
+        <include>
+            <uri>model://adaptive_lidar_world</uri>
+        </include>
+
+        <!-- Light Source  -->
+        <include>
+            <uri>model://sun</uri>
+        </include>
+
+        <!-- Ground Plane -->
+        <include>
+            <uri>model://ground_plane</uri>
+        </include>
+
+    <plugin name="factory" filename="adaptive_lidar_world/libadaptive_lidar_world.so"/>
+
+  </world>
+</sdf>

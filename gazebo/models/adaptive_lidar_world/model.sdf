@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+    <model name="adaptive_lidar_world">
+        <static>true</static>
+        <link name="chassis">
+            <pose>0 0 0 0 0 0</pose>
+
+            <!-- Base -->
+            <collision name="collision">
+                <geometry>
+                    <cylinder>
+                        <radius>0.0508</radius>
+                        <length>0.0762</length>
+                    </cylinder>
+                </geometry>
+            </collision>
+            <visual name="visual">
+                <pose>0 0 0.05 0 0 0</pose>
+                <geometry>
+                    <cylinder>
+                        <radius>0.0508</radius>
+                        <length>0.0762</length>
+                    </cylinder>
+                </geometry>
+            </visual>
+
+            <sensor name="fov1" type="ray">
+                <pose>0 0 0.1 0 0 0</pose>
+                <visualize>true</visualize>
+                <ray>
+                    <scan>
+                        <horizontal>
+                            <samples>32</samples>
+                            <resolution>1</resolution>
+                            <min_angle>-0.06</min_angle>
+                            <max_angle>0.06</max_angle>
+                        </horizontal>
+                        <vertical>
+                            <samples>32</samples>
+                            <resolution>1</resolution>
+                            <min_angle>-0.06</min_angle>
+                            <max_angle>0.06</max_angle>
+                        </vertical>
+                    </scan>
+                    <range>
+                        <min>0.2</min>
+                        <max>3.7</max>
+                        <resolution>1</resolution>
+                    </range>
+                    <noise>
+                        <type>gaussian</type>
+                        <mean>0</mean>
+                        <stddev>0.1</stddev>
+                    </noise>
+                </ray>
+            </sensor>
+
+        </link>
+    </model>
+</sdf>

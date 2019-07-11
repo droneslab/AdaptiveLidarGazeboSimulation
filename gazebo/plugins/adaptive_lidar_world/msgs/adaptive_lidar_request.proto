@@ -1,0 +1,18 @@
+package adaptive_lidar_msgs.msgs;
+
+message AdaptiveLidarRequest
+{
+  required int32  hSamples = 1;
+  required double hRes = 2;
+  required double hMinAngle = 3;
+  required double hMaxAngle = 4;
+  required int32  vSamples = 5;
+  required double vRes = 6;
+  required double vMinAngle = 7;
+  required double vMaxAngle = 8;
+  required double rMin = 9;
+  required double rMax = 10;
+  required double rRes = 11;
+  optional double nMean = 12 [default = 0];
+  optional double nStd = 13 [default = 0.1];
+}

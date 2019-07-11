@@ -1,0 +1,56 @@
+#!/bin/bash
+
+CWD=$(pwd)
+
+MODEL_DIR="${CWD}/gazebo/models"
+PLUGIN_DIR="${CWD}/gazebo/plugins"
+WORLD_DIR="${CWD}/gazebo/worlds"
+WORLD_FILE="adaptive_lidar_world.world"
+GZ_INCLUDE_DIR="${CWD}"
+
+function usage {
+    echo ""
+    echo "Usage:"
+    echo ""
+    echo "run [build|help]"
+    echo ""
+    echo "  Options"
+    echo "      run   - Build and run the project"
+    echo "      build - Only build the project"
+    echo "      help  - Show this help message"
+    echo ""
+}
+
+function build {
+    cd ${PLUGIN_DIR}/build
+    rm -rf ./*
+    cmake ..
+    make
+}
+
+function run {
+    export GAZEBO_MODEL_PATH="${GAZEBO_MODEL_PATH}:${MODEL_DIR}" && export GAZEBO_PLUGIN_PATH="${GAZEBO_PLUGIN_PATH}:${PLUGIN_DIR}/build"
+    cd ${WORLD_DIR}
+    gazebo --verbose ${WORLD_FILE}
+}
+
+function buildrun {
+    build
+    run
+}
+
+if [[ "$#" -eq 0 ]]; then
+    buildrun
+elif [[ "$#" -eq 1 ]]; then
+    if [[ "$1" == "build" ]]; then
+       build
+    elif [[ "$1" == "run" ]]; then
+       run
+   else
+       usage
+    fi
+else
+    usage
+fi
+
+cd ${CWD}
