@@ -1,6 +1,6 @@
 ## Gazebo Simulation of an Adaptive Scanning Depth Sensor
 
-![](images/alidar-simulation.gif)
+![](images/alidar-simulation.gif =300x300)
 
 ### Requirements
 - Gazebo Version 7.0
